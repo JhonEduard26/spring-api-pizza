@@ -4,10 +4,7 @@ import com.dev.pizza.persistence.entity.Pizza;
 import com.dev.pizza.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,12 +25,21 @@ public class PizzaController {
 
     @GetMapping("{id}")
     public ResponseEntity<Pizza> findOneById(@PathVariable Integer id){
-        Pizza pizza = this.pizzaService.findOneById(id);
+        return ResponseEntity.ok(this.pizzaService.findOneById(id));
+    }
 
-        if (pizza != null) {
-            return ResponseEntity.ok(pizza);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @PostMapping
+    public ResponseEntity<Pizza> create(@RequestBody Pizza pizza) {
+        return ResponseEntity.ok(this.pizzaService.create(pizza));
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Pizza> update( @PathVariable Integer id, @RequestBody Pizza pizza){
+        return ResponseEntity.ok(this.pizzaService.update(id, pizza));
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> remove(@PathVariable Integer id) {
+        return ResponseEntity.ok(this.pizzaService.remove(id));
     }
 }

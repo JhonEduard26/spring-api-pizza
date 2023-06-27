@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Entity
 @Table(name = "pizzas")
 @Getter
@@ -13,8 +14,8 @@ import lombok.Setter;
 public class Pizza {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(nullable = false, unique = true, length = 40)
     private String name;
@@ -25,12 +26,12 @@ public class Pizza {
     @Column(columnDefinition = "numeric")
     private Double price;
 
-    @Column(columnDefinition = "smallint")
+    @Column(columnDefinition = "bool")
     private Boolean vegetarian;
 
-    @Column(columnDefinition = "smallint")
+    @Column(columnDefinition = "bool")
     private Boolean vegan;
 
-    @Column(columnDefinition = "smallint", nullable = false)
+    @Column(columnDefinition = "bool", nullable = false)
     private Boolean available;
 }

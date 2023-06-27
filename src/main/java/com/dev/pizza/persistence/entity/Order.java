@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "orders")
@@ -16,8 +17,8 @@ import java.util.List;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(columnDefinition = "timestamp", nullable = false)
     private LocalDateTime date;
@@ -32,7 +33,7 @@ public class Order {
     private String additionalNotes;
 
     @Column(name = "id_customer", nullable = false)
-    private String idCustomer;
+    private Integer idCustomer;
 
     @OneToOne
     @JoinColumn(referencedColumnName = "id", name = "id_customer", insertable = false, updatable = false)

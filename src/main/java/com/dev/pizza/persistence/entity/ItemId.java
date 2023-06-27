@@ -13,8 +13,8 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemId implements Serializable {
-    private String idOrder;
-    private String idItem;
+    private Integer idOrder;
+    private Integer idItem;
 
     @Override
     public boolean equals(Object o) {

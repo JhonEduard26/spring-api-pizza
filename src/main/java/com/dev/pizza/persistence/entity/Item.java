@@ -15,11 +15,11 @@ public class Item {
 
     @Id
     @Column(name = "id_item", nullable = false)
-    private String idItem;
+    private Integer idItem;
 
     @Id
     @Column(name = "id_order", nullable = false)
-    private String idOrder;
+    private Integer idOrder;
 
     @Column(columnDefinition = "numeric", nullable = false)
     private Double quantity;
@@ -28,7 +28,7 @@ public class Item {
     private Double price;
 
     @Column(name = "id_pizza", nullable = false)
-    private String idPizza;
+    private Integer idPizza;
 
     @OneToOne
     @JoinColumn(referencedColumnName = "id", name = "id_pizza", insertable = false, updatable = false)

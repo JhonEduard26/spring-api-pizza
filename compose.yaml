@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  db:
+    image: 'postgres:15.3'
+    restart: 'always'
+    environment:
+      POSTGRES_DB: pizza-db
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - '5432:5432'
+    container_name: 'pizzadb'
+    volumes:
+      - './postgres:/var/lib/postgresql'

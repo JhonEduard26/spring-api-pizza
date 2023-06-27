@@ -29,4 +29,12 @@ public class Item {
 
     @Column(name = "id_pizza", nullable = false)
     private String idPizza;
+
+    @OneToOne
+    @JoinColumn(referencedColumnName = "id", name = "id_pizza", insertable = false, updatable = false)
+    private Pizza pizza;
+
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id", name = "id_order", insertable = false, updatable = false)
+    private Order order;
 }
